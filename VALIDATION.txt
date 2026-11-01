@@ -1,0 +1,24 @@
+Simple FFD 1.0.0 release validation — 2026-11-01
+
+Regression script: ../tests/test_grid.py
+Re-run after splitting the add-on into seven modules; both versions passed.
+Tests load the add-on as a package, including its relative imports.
+Passed in background factory sessions: Blender 4.5.5 LTS and 5.2.3 LTS.
+- Registration, unregister, and re-registration.
+- Asymmetric 2x3x4 creation without mesh deformation.
+- Pending edits leave existing topology and deformation unchanged.
+- Update from Edit Mode resets deformation and changes topology.
+- World-space rest bounds, parenting, and modifier references preserved.
+- Negative/nonuniform mesh scale and rotated/translated mesh tested.
+- Hidden-cage update from mesh selection reopens editing.
+- Shared lattice data remains unchanged on other objects.
+- Shape keys disable grid updates.
+
+Not tested: interactive UI, Ctrl+Z/redo, installation,
+save/reopen, arbitrary constraints/animation/modifier stacks.
+Release: simple_ffd-1.0.0.zip. Minimum Blender version: 4.5.0.
+
+Manual check: move points, change X/Y/Z, verify deformation remains until
+Update Grid. Check reset, Ctrl+Z/redo, Finish Editing, reopening and save/reopen.
+Update Grid also resets deformation when counts are unchanged.
+Physical cage bounds stay fixed; numeric scale may change for rest-space fitting.
